@@ -13,7 +13,15 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       drawer: Drawer(
         child: ListView(
-
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage("https://fq.lnwfile.com/zp2qee.jpg")
+              ),
+              accountName: Text("Nontawat Wuthifaey"),
+               accountEmail: Text("61123810@g.cmru.ac.th"),
+            )
+          ],
         ),
       ),
       appBar: AppBar(title: Text("App Wat"),
