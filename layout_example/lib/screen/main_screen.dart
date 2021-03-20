@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:layout_example/page.dart';
 
 class MainScreen extends StatefulWidget {
@@ -51,9 +52,16 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     Text("กระตุกจิตกระชากใจ"),
                   ],
-                ),
+                  ),
               ),
             ),
+             ListTile(
+                    onTap: () {
+                      Navigator.pushNamed(context,'/history');
+                    },
+                    leading: Icon(Icons.people),
+                    title: Text("ประวัติ")
+                  ),
             ListTile(
               leading: Icon(Icons.people),
               title: Text("Profile"),
