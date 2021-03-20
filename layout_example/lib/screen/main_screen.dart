@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:layout_example/page.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key}) : super(key: key);
@@ -8,6 +9,16 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  int currentIndex = 0;
+
+  void onIndexChanged(int index) {
+    setState(
+      () {
+        currentIndex = index;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,35 +27,62 @@ class _MainScreenState extends State<MainScreen> {
           children: [
             // UserAccountsDrawerHeader(
             //   currentAccountPicture: CircleAvatar(
-            //     backgroundImage: NetworkImage("https://fq.lnwfile.com/zp2qee.jpg")
+            //     backgroundImage: NetworkImage(
+            //         "https://cf-s3.petcoach.co/thumbnails/article/uploads/articles/363/bdd17f44166dbff74876fced4dc6c9d3ca06ad80.jpeg"),
             //   ),
-            //   accountName: Text("Nontawat Wuthifaey"),
-            //    accountEmail: Text("61123810@g.cmru.ac.th"),
+            //   accountName: Text("Mic"),
+            //   accountEmail: Text("admin@admin"),
             // ),
             DrawerHeader(
+              margin: EdgeInsets.zero,
               decoration: BoxDecoration(
-                image: DecorationImage(image:NetworkImage("https://www.oxygenna.com/wp-content/uploads/2015/11/18.jpg"))
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "https://www.oxygenna.com/wp-content/uploads/2015/11/18.jpg"),
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: Center()
+              child: Center(
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://fq.lnwfile.com/zp2qee.jpg"),
+                    ),
+                    Text("กระตุกจิตกระชากใจ"),
+                  ],
+                ),
               ),
+            ),
             ListTile(
               leading: Icon(Icons.people),
               title: Text("Profile"),
             ),
             ListTile(
-              leading: Icon(Icons.people),
+              leading: Icon(Icons.account_box),
               title: Text("About"),
             ),
             ListTile(
-              leading: Icon(Icons.people),
-              title: Text("Contach"),
+              leading: Icon(Icons.phone),
+              title: Text("Contact"),
             ),
           ],
         ),
       ),
-      appBar: AppBar(title: Text("App Wat"),
-      )
+      appBar: AppBar(
+        title: Text(pages[currentIndex].title),
+      ),
+      body: pages[currentIndex].page,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: onIndexChanged,
+        items: pages
+            .map(
+              (page) =>
+                  BottomNavigationBarItem(icon: page.icon, label: page.label),
+            )
+            .toList(),
+      ),
     );
-    
   }
 }
