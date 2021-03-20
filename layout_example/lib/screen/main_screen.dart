@@ -14,13 +14,31 @@ class _MainScreenState extends State<MainScreen> {
       drawer: Drawer(
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage("https://fq.lnwfile.com/zp2qee.jpg")
+            // UserAccountsDrawerHeader(
+            //   currentAccountPicture: CircleAvatar(
+            //     backgroundImage: NetworkImage("https://fq.lnwfile.com/zp2qee.jpg")
+            //   ),
+            //   accountName: Text("Nontawat Wuthifaey"),
+            //    accountEmail: Text("61123810@g.cmru.ac.th"),
+            // ),
+            DrawerHeader(
+              decoration: BoxDecoration(
+                image: DecorationImage(image:NetworkImage("https://www.oxygenna.com/wp-content/uploads/2015/11/18.jpg"))
               ),
-              accountName: Text("Nontawat Wuthifaey"),
-               accountEmail: Text("61123810@g.cmru.ac.th"),
-            )
+              child: Center()
+              ),
+            ListTile(
+              leading: Icon(Icons.people),
+              title: Text("Profile"),
+            ),
+            ListTile(
+              leading: Icon(Icons.people),
+              title: Text("About"),
+            ),
+            ListTile(
+              leading: Icon(Icons.people),
+              title: Text("Contach"),
+            ),
           ],
         ),
       ),
